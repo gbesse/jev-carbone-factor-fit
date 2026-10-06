@@ -1,6 +1,6 @@
 {
   "name": "@gbesse/jev-carbone-factor-fit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Classe les facteurs d’émission ADEME candidats pour un libellé d’activité ou de dépense.",
   "type": "module",
   "license": "MIT",
