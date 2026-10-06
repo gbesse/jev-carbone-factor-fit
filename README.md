@@ -2,7 +2,7 @@
 
 **Classe les facteurs d’émission ADEME candidats pour un libellé d’activité ou de dépense.**
 
-[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.1 · Documentation française
+[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.2 · Documentation française
 
 Jev Carbone Factor Fit transforme un rapprochement de facteur carbone sourcé en une catégorie explicite et révisable. Le dépôt sépare les règles vérifiables en code de la comparaison sémantique confiée à Jev.
 
@@ -36,6 +36,8 @@ npm run demo:limite
 Résultat attendu : **`aucun_candidat`**, avec zéro appel Jev.
 
 ### Décision incertaine à revoir
+
+`node examples/seuil-confiance.mjs` compare les confiances synthétiques `0.79` et `0.80` : la première exige une revue, la seconde non. / This offline example checks both sides of the human-review threshold. / Este ejemplo sin conexión comprueba ambos lados del umbral de revisión humana.
 
 [`examples/revue-humaine.mjs`](examples/revue-humaine.mjs) simule un dossier incomplet. Une confiance de `0.62` doit produire `review: true` afin que l’incertitude reste visible.
 
