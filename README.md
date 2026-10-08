@@ -2,7 +2,7 @@
 
 **Classe les facteurs d’émission ADEME candidats pour un libellé d’activité ou de dépense.**
 
-[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.2 · Documentation française
+[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.3 · Documentation française
 
 Jev Carbone Factor Fit transforme un rapprochement de facteur carbone sourcé en une catégorie explicite et révisable. Le dépôt sépare les règles vérifiables en code de la comparaison sémantique confiée à Jev.
 
@@ -91,3 +91,11 @@ npm run demo
 La CI exécute ces vérifications sous Node.js 22 et 24.
 
 Projet indépendant, sans affiliation avec TypeSafe AI, data.gouv.fr ni l’administration française. Consultez la [documentation de l’API Jev](https://docs.typesafe.ai/api) et les [limites du modèle](https://docs.typesafe.ai/model-jaggedness/jev-1.13).
+
+## October 2026 improvement · Amélioration d’octobre 2026 · Mejora de octubre de 2026
+
+An unknown decision or a probability/confidence outside [0,1] now raises an error instead of producing a misleading factor match. Run `npm test` offline.
+
+Une décision inconnue ou une probabilité/confiance hors de [0,1] provoque désormais une erreur plutôt qu’un rapprochement trompeur. Lancez `npm test` hors ligne.
+
+Una decisión desconocida o una probabilidad/confianza fuera de [0,1] ahora provoca un error en vez de una correspondencia engañosa. Ejecute `npm test` sin conexión.
