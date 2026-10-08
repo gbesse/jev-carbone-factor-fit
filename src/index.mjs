@@ -25,8 +25,12 @@ export async function matchEmissionFactor(input, provider) {
     state: record,
     questions: { decision: { type: "choice", instructions: "Analysez ce rapprochement de facteur carbone à partir des seuls éléments sourcés. Choisissez la catégorie la plus prudente. N’inventez ni fait, ni droit applicable, ni garantie.", criteria: CRITERIA } },
   });
-  const answer = response.answers.decision;
-  return { decision: answer.choice, label: DECISIONS[answer.choice], probability: answer.probabilities[answer.choice], confidence: answer.confidence, review: answer.confidence < 0.8, deterministic: false, usage: response.usage };
+  const answer = response?.answers?.decision;
+  const probability = answer?.probabilities?.[answer.choice];
+  if (!Object.hasOwn(DECISIONS, answer?.choice) || !Number.isFinite(probability) || probability < 0 || probability > 1 || !Number.isFinite(answer.confidence) || answer.confidence < 0 || answer.confidence > 1) {
+    throw new TypeError("Réponse Jev invalide : catégorie, probabilité ou confiance hors contrat");
+  }
+  return { decision: answer.choice, label: DECISIONS[answer.choice], probability, confidence: answer.confidence, review: answer.confidence < 0.8, deterministic: false, usage: response.usage };
 }
 export async function runCli(argv, io = console) {
   if (argv.length !== 1) throw new Error("Usage : jev-carbone-factor-fit <dossier.json>");

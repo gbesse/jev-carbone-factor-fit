@@ -67,3 +67,9 @@ test("marque une décision incertaine pour revue humaine", async () => {
   assert.equal(résultat.confidence, 0.62);
   assert.equal(provider.calls, 1);
 });
+test("rejette une catégorie inventée ou une probabilité hors contrat", async () => {
+  for (const [choice, probability] of [["invented", 0.9], ["exact_fit", 1.2]]) {
+    const provider = createFakeProvider(() => ({ answers: { decision: { choice, probabilities: { [choice]: probability }, confidence: 0.9 } } }));
+    await assert.rejects(matchEmissionFactor(casPrincipal, provider), /Réponse Jev invalide/);
+  }
+});
