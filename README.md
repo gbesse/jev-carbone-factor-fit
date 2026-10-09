@@ -99,3 +99,7 @@ An unknown decision or a probability/confidence outside [0,1] now raises an erro
 Une décision inconnue ou une probabilité/confiance hors de [0,1] provoque désormais une erreur plutôt qu’un rapprochement trompeur. Lancez `npm test` hors ligne.
 
 Una decisión desconocida o una probabilidad/confianza fuera de [0,1] ahora provoca un error en vez de una correspondencia engañosa. Ejecute `npm test` sin conexión.
+
+## Contrôle d’adoption · Adoption check · Comprobación de adopción
+
+[Français : essayer un cas concret](examples/adoption-check.md) · [English: try a concrete case](examples/adoption-check.md) · [Español: pruebe un caso concreto](examples/adoption-check.md).
