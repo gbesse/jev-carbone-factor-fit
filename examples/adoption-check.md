@@ -40,3 +40,15 @@ FR : adaptez une copie de la fixture locale à cette situation, puis vérifiez l
 EN: adapt a copy of the local fixture to this situation, then check the behavior described above. Values are illustrative, not measured Jev output.
 
 ES: adapte una copia de la fixture local a esta situación y compruebe el comportamiento descrito arriba. Los valores son ilustrativos, no resultados Jev medidos.
+
+## Second cas · Second case · Segundo caso
+
+```text
+probability=0.79; review_threshold=0.80
+```
+
+**FR :** Un rapprochement juste sous le seuil doit rester en revue ; franchir le seuil ne corrige pas une unité ou un périmètre incohérent.
+
+**EN:** A match just below the threshold should remain in review; crossing it does not fix a mismatched unit or scope.
+
+**ES:** Una coincidencia justo por debajo del umbral debe seguir en revisión; superarlo no corrige una unidad o un alcance incoherente.
