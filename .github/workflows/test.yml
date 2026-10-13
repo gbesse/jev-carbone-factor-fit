@@ -22,3 +22,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run demo
+      - run: node examples/compatibility.mjs fr
+      - run: node examples/compatibility.mjs en
+      - run: node examples/compatibility.mjs es
+      - run: npm pack --ignore-scripts

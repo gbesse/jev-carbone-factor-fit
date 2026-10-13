@@ -2,7 +2,7 @@
 
 **Classe les facteurs d’émission ADEME candidats pour un libellé d’activité ou de dépense.**
 
-[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.3 · Documentation française
+[![Tests](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-carbone-factor-fit/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.2.0 · Documentation française
 
 Jev Carbone Factor Fit transforme un rapprochement de facteur carbone sourcé en une catégorie explicite et révisable. Le dépôt sépare les règles vérifiables en code de la comparaison sémantique confiée à Jev.
 
@@ -103,3 +103,11 @@ Una decisión desconocida o una probabilidad/confianza fuera de [0,1] ahora prov
 ## Contrôle d’adoption · Adoption check · Comprobación de adopción
 
 [Français : essayer un cas concret](examples/adoption-check.md) · [English: try a concrete case](examples/adoption-check.md) · [Español: pruebe un caso concreto](examples/adoption-check.md).
+
+## Compatibilité explicite / Explicit compatibility / Compatibilidad explícita
+
+FR : `compatibility` filtre les unités, périmètres, territoires et périodes incompatibles avant tout appel. Des métadonnées manquantes imposent une revue même avec une confiance élevée. [Contrat et exemple](docs/compatibility.md).
+
+EN: `compatibility` filters incompatible units, scopes, geographies and periods before any call. Missing metadata forces review even at high confidence. [Contract and example](docs/compatibility.md).
+
+ES: `compatibility` filtra unidades, alcances, territorios y períodos incompatibles antes de llamar. Metadatos ausentes exigen revisión incluso con confianza alta. [Contrato y ejemplo](docs/compatibility.md).
