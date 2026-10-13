@@ -13,3 +13,8 @@ const dossier = activityCase({
   }
 });
 void matchEmissionFactor(dossier, { decide: async () => ({}) });
+
+import { screenFactorCandidates } from "../src/index.mjs";
+const metadata = screenFactorCandidates({ compatibility: { activityUnit: "kWh", geography: "FR", year: 2026, scope: "combustion" }, candidates: [{ id: "synthetic", geographies: ["FR"] }] });
+const reasons: string[] = metadata.receipt.rejected.flatMap((row) => row.reasons);
+void reasons;
