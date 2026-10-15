@@ -178,3 +178,23 @@ test('a plausible result remains human-reviewed when metadata is missing', async
   assert.equal(out.review, true);
   assert.equal(out.probability, 0.99);
 });
+
+test('asynchronous assessment uses snapshotted data after caller mutations', async () => {
+ const input=structuredClone(record);let release,entered;
+ const ready=new Promise(resolve=>{entered=resolve;}),gate=new Promise(resolve=>{release=resolve;});
+ const result=matchEmissionFactor(input,{async decide(request){entered();await gate;
+  assert.equal(request.state.candidates[0].activityUnit,'kWh');
+  assert.equal(request.state.compatibility.year,2026);return response();}});
+ await ready;input.candidates[0].activityUnit='kg';input.compatibility.year=2030;release();
+ const out=await result;assert.equal(out.review,false);assert.equal(out.compatibility.constraints.year,2026);
+ assert.equal(input.candidates[0].activityUnit,'kg');
+});
+test('screened candidates and constraints cannot mutate the caller source',()=>{
+ const input=structuredClone(record),out=screenFactorCandidates(input);
+ out.candidates[0].geographies.push('US');out.receipt.constraints.year=2030;
+ assert.deepEqual(input.candidates[0].geographies,['FR']);assert.equal(input.compatibility.year,2026);
+});
+test('uncopyable dossier blocks before provider call',async()=>{
+ const input={...record,uncopyable:()=>{}};
+ await assert.rejects(matchEmissionFactor(input,{decide(){throw Error('must not call');}}),/copiable/);
+});

@@ -15,6 +15,8 @@ const CRITERIA = Object.freeze({
   no_candidate: 'aucun candidat',
 });
 export function activityCase(input) {
+  try { input = structuredClone(input); }
+  catch { throw new TypeError('Dossier non copiable / Record cannot be snapshotted / No se puede copiar el registro'); }
   if (!input?.id || !input?.text || !input?.source?.url || !input?.source?.date)
     throw new TypeError(
       'Le dossier exige id, text, source.url et source.date / Record requires id, text, source.url and source.date / El registro exige id, text, source.url y source.date',

@@ -12,6 +12,8 @@ const fail = () => {
 };
 
 export function screenFactorCandidates(record) {
+  try { record = structuredClone(record); }
+  catch { fail(); }
   if (!object(record.compatibility)) fail();
   const target = record.compatibility;
   if (
@@ -84,6 +86,7 @@ export function screenFactorCandidates(record) {
     candidates: eligible,
     receipt: {
       version: 1,
+      constraints: {activityUnit: target.activityUnit, geography: target.geography, year: target.year, scope: target.scope},
       eligibleIds: eligible.map((c) => c.id),
       rejected,
       missingMetadata: missing,
