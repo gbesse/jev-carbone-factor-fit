@@ -33,6 +33,7 @@ export type FactorCandidate = {
 };
 export type CompatibilityReceipt = {
   version: number;
+  constraints: CompatibilityTarget;
   eligibleIds: string[];
   rejected: { id: string; reasons: string[] }[];
   missingMetadata: { id: string; fields: string[] }[];
