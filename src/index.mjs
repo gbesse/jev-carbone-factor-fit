@@ -83,14 +83,20 @@ export async function matchEmissionFactor(input, provider, { lang = 'fr' } = {})
       decision: {
         type: 'choice',
         instructions: INSTRUCTIONS[lang],
-        criteria: LOCAL_CRITERIA[lang],
+        criteria: { ...LOCAL_CRITERIA[lang] },
       },
     },
   });
   const answer = response?.answers?.decision;
-  const probability = answer?.probabilities?.[answer?.choice];
+  const probabilities = answer?.probabilities;
+  const keys = Object.keys(DECISIONS);
+  const distributionValid = probabilities && typeof probabilities === 'object' && !Array.isArray(probabilities) && Object.keys(probabilities).length === keys.length && keys.every(key => Object.hasOwn(probabilities, key) && Number.isFinite(probabilities[key]) && probabilities[key] >= 0 && probabilities[key] <= 1) && Math.abs(keys.reduce((sum, key) => sum + probabilities[key], 0) - 1) <= 0.001;
+  const probability = probabilities?.[answer?.choice];
   if (
+    answer?.type !== 'choice' ||
+    !distributionValid ||
     !Object.hasOwn(DECISIONS, answer?.choice) ||
+    keys.some(key => probabilities[key] > probability) ||
     !Number.isFinite(probability) ||
     probability < 0 ||
     probability > 1 ||
