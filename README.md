@@ -111,3 +111,10 @@ FR : `compatibility` filtre les unités, périmètres, territoires et périodes 
 EN: `compatibility` filters incompatible units, scopes, geographies and periods before any call. Missing metadata forces review even at high confidence. [Contract and example](docs/compatibility.md).
 
 ES: `compatibility` filtra unidades, alcances, territorios y períodos incompatibles antes de llamar. Metadatos ausentes exigen revisión incluso con confianza alta. [Contrato y ejemplo](docs/compatibility.md).
+
+
+FR : Une réponse sémantique doit déclarer `type: choice`, exactement les quatre probabilités attendues, finies et comprises entre 0 et 1, une somme à 0,001 près de 1 et un choix de probabilité maximale (ex æquo autorisés). Une distribution invalide échoue au lieu de produire un rapprochement. Cela vérifie le contrat, pas la calibration ni l’exactitude du facteur ; les règles de compatibilité et la revue humaine restent nécessaires.
+
+EN: A semantic answer must declare `type: choice`, exactly the four expected finite probabilities between 0 and 1, a sum within 0.001 of 1, and a highest-probability choice (ties allowed). Invalid distributions fail instead of yielding a match. This checks the contract, not calibration or factor correctness; compatibility rules and human review remain necessary.
+
+ES: La respuesta semántica debe declarar `type: choice`, exactamente las cuatro probabilidades previstas, finitas entre 0 y 1, una suma a menos de 0,001 de 1 y una opción de probabilidad máxima (se permiten empates). Una distribución inválida falla sin producir una correspondencia. Esto valida el contrato, no la calibración ni la exactitud del factor; siguen siendo necesarias las reglas de compatibilidad y la revisión humana.

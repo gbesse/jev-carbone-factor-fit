@@ -73,3 +73,15 @@ test("rejette une catégorie inventée ou une probabilité hors contrat", async 
     await assert.rejects(matchEmissionFactor(casPrincipal, provider), /Réponse Jev invalide/);
   }
 });
+
+
+test('full choice contract rejects impossible factor assessments in each language', async()=>{
+ const valid={type:'choice',choice:'exact_fit',probabilities:{exact_fit:.82,plausible_fit:.06,weak_fit:.06,no_candidate:.06},confidence:.9};
+ const cases=[{type:'boolean'}, {probabilities:{exact_fit:.82}}, {probabilities:{...valid.probabilities,unknown:0}}, {probabilities:{...valid.probabilities,weak_fit:NaN}}, {probabilities:{...valid.probabilities,weak_fit:-.1}}, {probabilities:{...valid.probabilities,weak_fit:.6}}, {choice:'weak_fit'}, {confidence:Infinity}];
+ for(const lang of ['fr','en','es'])for(const change of cases)await assert.rejects(matchEmissionFactor(casPrincipal,{async decide(){return {answers:{decision:{...valid,...change}}};}},{lang}),/Invalid Jev response/);
+});
+test('provider cannot mutate criteria used by later requests',async()=>{
+ let original;
+ const provider={async decide(request){if(original===undefined){original=request.questions.decision.criteria.exact_fit;request.questions.decision.criteria.exact_fit='mutated';}else assert.equal(request.questions.decision.criteria.exact_fit,original);return {answers:{decision:{type:'choice',choice:'exact_fit',probabilities:{exact_fit:1,plausible_fit:0,weak_fit:0,no_candidate:0},confidence:1}}};}};
+ await matchEmissionFactor(casPrincipal,provider);await matchEmissionFactor(casPrincipal,provider);
+});

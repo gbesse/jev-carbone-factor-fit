@@ -20,7 +20,7 @@ const record = {
 };
 const response = (choice = 'exact_fit') => ({
   answers: {
-    decision: { type: 'choice', choice, probabilities: { [choice]: 0.99 }, confidence: 0.99 },
+    decision: { type: 'choice', choice, probabilities: Object.fromEntries(['exact_fit', 'plausible_fit', 'weak_fit', 'no_candidate'].map(key=>[key,key===choice?.toString()?0.99:0.01/3])), confidence: 0.99 },
   },
 });
 test('reject all known mismatches before calling provider', async () => {
