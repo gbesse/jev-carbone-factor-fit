@@ -1,4 +1,5 @@
 // Explicit metadata constraints; no unit conversion, geography inference or year guessing.
+import { canonicalSourceDate } from './source-date.mjs';
 const messages = {
   fr: 'Métadonnées de compatibilité invalides : vérifiez compatibility et candidates.',
   en: 'Invalid compatibility metadata: check compatibility and candidates.',
@@ -64,7 +65,7 @@ export function screenFactorCandidates(record) {
     if (source == null) unknown.push('source');
     else {
       if (!object(source)) fail();
-      if (!text(source.url) || !text(source.date) || Number.isNaN(Date.parse(source.date)))
+      if (!text(source.url) || canonicalSourceDate(source.date) === null)
         unknown.push('source');
       else {
         let url;
