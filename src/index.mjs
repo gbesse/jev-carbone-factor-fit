@@ -1,6 +1,7 @@
 // Objectif : implémenter la frontière de décision métier propre au dépôt.
 import { readFile } from 'node:fs/promises';
 import { screenFactorCandidates } from './compatibility.mjs';
+import { canonicalSourceDate } from './source-date.mjs';
 export { screenFactorCandidates } from './compatibility.mjs';
 export const DECISIONS = Object.freeze({
   exact_fit: 'correspondance_exacte',
@@ -21,16 +22,16 @@ export function activityCase(input) {
     throw new TypeError(
       'Le dossier exige id, text, source.url et source.date / Record requires id, text, source.url and source.date / El registro exige id, text, source.url y source.date',
     );
-  const date = new Date(input.source.date);
-  if (Number.isNaN(date.valueOf()))
+  const date = canonicalSourceDate(input.source.date);
+  if (date === null)
     throw new TypeError(
-      'source.date doit être une date ISO valide / source.date must be a valid ISO date / source.date debe ser una fecha ISO válida',
+      'source.date exige une date ISO calendaire valide ou un horodatage avec secondes et fuseau / source.date requires a calendar-valid ISO date or timestamp with seconds and timezone / source.date exige fecha ISO válida de calendario o fecha y hora con segundos y zona',
     );
   return {
     ...input,
     id: String(input.id),
     text: String(input.text).trim(),
-    source: { ...input.source, url: String(input.source.url), date: date.toISOString() },
+    source: { ...input.source, url: String(input.source.url), date },
   };
 }
 const INSTRUCTIONS = {
