@@ -126,3 +126,11 @@ ES: La respuesta semántica debe declarar `type: choice`, exactamente las cuatro
 **EN.** Provenance dates are calendar-checked: `2026-02-30` no longer silently rolls into March. Accepted forms: `YYYY-MM-DD` (UTC midnight) or an ISO timestamp with seconds and explicit timezone, up to three fractional-second digits. Invalid activity provenance stops before Jev. Invalid candidate dates remain unknown metadata: review is required and `exact_fit` is blocked even at maximum confidence. User text and metadata are not automatically repaired.
 
 **ES.** Se validan fechas de procedencia en el calendario: `2026-02-30` ya no pasa silenciosamente a marzo. Formatos: `YYYY-MM-DD` (medianoche UTC) o fecha y hora ISO con segundos y zona explícita, hasta tres decimales de segundo. Una fecha inválida del registro detiene el proceso antes de Jev. Fechas inválidas de candidatos siguen siendo metadatos desconocidos: exigen revisión e impiden `exact_fit` incluso con confianza máxima. No se reparan automáticamente textos ni metadatos del usuario.
+
+## Typed record evidence / Dossier typé / Registro tipado
+
+FR — Les champs id, text et source.url doivent être des chaînes non blanches ; nombres, booléens, tableaux et objets sont refusés avant tout fournisseur. Les identifiants et métadonnées fournis restent littéraux dans la copie du dossier.
+
+EN — Fields id, text and source.url must be nonblank strings; numbers, booleans, arrays and objects are rejected before any provider call. Supplied identities and metadata remain literal in the record snapshot.
+
+ES — Los campos id, text y source.url deben ser cadenas no vacías; se rechazan números, booleanos, matrices y objetos antes de llamar al proveedor. Las identidades y metadatos se conservan literalmente en la copia del registro.
