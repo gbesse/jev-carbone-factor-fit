@@ -134,3 +134,12 @@ FR — Les champs id, text et source.url doivent être des chaînes non blanches
 EN — Fields id, text and source.url must be nonblank strings; numbers, booleans, arrays and objects are rejected before any provider call. Supplied identities and metadata remain literal in the record snapshot.
 
 ES — Los campos id, text y source.url deben ser cadenas no vacías; se rechazan números, booleanos, matrices y objetos antes de llamar al proveedor. Las identidades y metadatos se conservan literalmente en la copia del registro.
+
+
+## 2026-11-05 — FR / EN / ES
+
+FR : `scaleEmissionEstimate({quantity,activityUnit,factor})` propage quantité et intervalle d’un facteur explicitement choisi par l’appelant. Refuse les unités différentes et les débordements ; aucune conversion ou sélection implicite, aucune certification d’empreinte. Exemple synthétique :10kg×2kgCO2e/kg=20kgCO2e.
+
+EN: `scaleEmissionEstimate({quantity,activityUnit,factor})` propagates quantity and interval for a caller-selected factor. Rejects unit mismatches and overflow; no implicit conversion or selection, no footprint certification. Synthetic example:10kg×2kgCO2e/kg=20kgCO2e.
+
+ES: `scaleEmissionEstimate({quantity,activityUnit,factor})` propaga cantidad e intervalo de factor elegido por usuario. Rechaza unidades distintas y desbordamientos; sin conversión ni selección implícita ni certificación de huella. Ejemplo sintético:10kg×2kgCO2e/kg=20kgCO2e.
