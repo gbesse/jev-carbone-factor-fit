@@ -143,3 +143,5 @@ export async function runCli(argv, io = console) {
     ),
   );
 }
+
+export {scaleEmissionEstimate} from './quantity.mjs';
