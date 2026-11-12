@@ -143,3 +143,12 @@ FR : `scaleEmissionEstimate({quantity,activityUnit,factor})` propage quantité e
 EN: `scaleEmissionEstimate({quantity,activityUnit,factor})` propagates quantity and interval for a caller-selected factor. Rejects unit mismatches and overflow; no implicit conversion or selection, no footprint certification. Synthetic example:10kg×2kgCO2e/kg=20kgCO2e.
 
 ES: `scaleEmissionEstimate({quantity,activityUnit,factor})` propaga cantidad e intervalo de factor elegido por usuario. Rechaza unidades distintas y desbordamientos; sin conversión ni selección implícita ni certificación de huella. Ejemplo sintético:10kg×2kgCO2e/kg=20kgCO2e.
+
+
+## 2026-11-12 — FR / EN / ES
+
+FR : Comparer les estimations de facteurs alternatifs sans sommer ni sélectionner automatiquement.
+
+EN: Compare alternative-factor estimates without summing or automatically selecting factors.
+
+ES: Comparar estimaciones de factores alternativos sin sumar ni seleccionar automáticamente.

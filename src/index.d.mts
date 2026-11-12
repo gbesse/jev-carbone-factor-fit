@@ -45,3 +45,5 @@ export function screenFactorCandidates(record: {
 }): { candidates: FactorCandidate[]; receipt: CompatibilityReceipt };
 
 export function scaleEmissionEstimate(input:{quantity:number;activityUnit:string;factor:{id:string;activityUnit:string;kgCO2ePerUnit:number;interval?:[number,number]}}):{factorId:string;quantity:number;activityUnit:string;kgCO2e:number;intervalKgCO2e:number[]|null;factorSelection:string;unitConversionApplied:boolean};
+
+export function compareEmissionFactors(input:any):{estimates:any[];estimateRangeKgCO2e:number[];factorSelected:boolean;uncertaintyIntervalCombined:boolean;causalReductionProven:boolean};
